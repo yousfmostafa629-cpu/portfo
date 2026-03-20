@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أسرار الحضارة المصرية - يوسف حمدان</title>
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --dark: #0b1a31;
+            --sand: #e3c16f;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #fdfaf5;
+            color: #333;
+            text-align: center;
+        }
+
+        /* نظام الصفحات */
+        .page { display: none; min-height: 100vh; padding: 20px; box-sizing: border-box; }
+        .active { display: flex; flex-direction: column; align-items: center; justify-content: center; animation: fadeIn 0.5s; }
+        
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* الصفحة الرئيسية */
+        #home {
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            color: white;
+        }
+
+        .header-box {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 20px;
+            border: 2px solid var(--gold);
+            max-width: 700px;
+            width: 90%;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+
+        h1 { color: var(--gold); font-size: 2.5rem; margin-bottom: 15px; text-shadow: 2px 2px 5px black; }
+        .info-text { font-size: 1.2rem; line-height: 1.7; }
+        .info-text b { color: var(--gold); }
+
+        /* الأزرار */
+        .nav-btn {
+            background: var(--gold);
+            color: var(--dark);
+            padding: 12px 25px;
+            margin: 10px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+        .nav-btn:hover { transform: scale(1.1); background: white; }
+
+        .share-btn {
+            background: #25D366; /* لون الواتساب */
+            color: white;
+            margin-top: 20px;
+        }
+
+        /* صفحة الطفل والهرم */
+        #explore { background: #87CEEB; position: relative; overflow: hidden; }
+        .pyramid {
+            width: 0; height: 0;
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            border-bottom: 250px solid var(--sand);
+            position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%);
+        }
+        .child-animation {
+            font-size: 60px; position: absolute; bottom: 50px;
+            animation: moveAround 10s infinite linear;
+            z-index: 10;
+        }
+        @keyframes moveAround {
+            0% { left: -10%; bottom: 50px; }
+            40% { left: 45%; bottom: 260px; } 
+            60% { left: 55%; bottom: 260px; }
+            100% { left: 110%; bottom: 50px; }
+        }
+
+        /* صفحة المكتبة */
+        .library-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px; width: 100%; max-width: 1000px; margin-top: 20px;
+        }
+        .card { background: white; border-radius: 15px; border-bottom: 5px solid var(--gold); padding: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .video-btn { background: var(--dark); color: white; display: block; padding: 10px; margin-top: 10px; text-decoration: none; border-radius: 5px; }
+
+        .back-home { position: fixed; top: 15px; right: 15px; background: #333; color: white; padding: 8px 15px; border-radius: 15px; cursor: pointer; z-index: 100; border: none; }
+    </style>
+</head>
+<body>
+
+    <section id="home" class="page active">
+        <div class="header-box">
+            <h1>أسرار الحضارة المصرية</h1>
+            <div class="info-text">
+                <p>عمل الطالب المتميز: <b>يوسف مصطفى حمدان</b></p>
+                <p>إشراف الأستاذة: <b>بروين كامل</b></p>
+                <p>مديرة المدرسة: <b>أ. مروة أبو النجا</b></p>
+                <p>وكيلة المدرسة: <b>أ. حنان محمدين</b></p>
+                <p>مدرسة: <b> الفريق عبد الغني الجمسي</b></p>
+            </div>
+            
+            <div style="margin-top: 20px;">
+                <button class="nav-btn" onclick="showPage('explore')">اكتشف الأسرار 🕵️‍♂️</button>
+                <button class="nav-btn" onclick="showPage('library')">مكتبة الأسرار 📚</button>
+                <br>
+                <button class="nav-btn share-btn" onclick="shareSite()">أنشر الأسرار مع أصدقائك 🔗</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="explore" class="page">
+        <button class="back-home" onclick="showPage('home')">🏠 العودة</button>
+        <h2 style="z-index: 20; color: #0b1a31; background: rgba(255,255,255,0.5); padding: 10px; border-radius: 10px;">يوسف يستكشف الأهرامات</h2>
+        <div class="pyramid"></div>
+        <div class="child-animation">🏃‍♂️</div>
+        <div style="position: absolute; bottom: 0; width: 100%; height: 50px; background: #c2b280;"></div>
+    </section>
+
+    <section id="library" class="page">
+        <button class="back-home" onclick="showPage('home')">🏠 العودة</button>
+        <h2 style="color: var(--dark);">مكتبة فيديوهات 2026 الحديثة</h2>
+        <div class="library-grid">
+            <div class="card"><h3>أسرار الأهرامات</h3><a href="https://www.youtube.com/results?search_query=أسرار+الأهرامات" target="_blank" class="video-btn">شاهد الفيديو</a></div>
+            <div class="card"><h3>أحمس والهكسوس</h3><a href="https://www.youtube.com/results?search_query=أحمس+والهكسوس" target="_blank" class="video-btn">شاهد الفيديو</a></div>
+            <div class="card"><h3>الحملة الفرنسية</h3><a href="https://www.youtube.com/results?search_query=الحملة+الفرنسية" target="_blank" class="video-btn">شاهد الفيديو</a></div>
+            <div class="card"><h3>الرومان والفرس</h3><a href="https://www.youtube.com/results?search_query=الرومان+والفرس+في+مصر" target="_blank" class="video-btn">شاهد الفيديو</a></div>
+        </div>
+    </section>
+
+    <script>
+        // دالة التنقل بين الصفحات
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0,0);
+        }
+
+        // دالة المشاركة
+        function shareSite() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'مشروع أسرار الحضارة المصرية',
+                    text: 'شاهد مشروع الطالب يوسف مصطفى حمدان عن أسرار الفراعنة بمدرسة الفريق عبد الغني!',
+                    url: window.location.href
+                }).then(() => console.log('تمت المشاركة بنجاح'))
+                  .catch((error) => console.log('خطأ في المشاركة', error));
+            } else {
+                alert("انسخ رابط الصفحة من المتصفح وارسله لأصدقائك!");
+            }
+        }
+    </script>
+
+</body>
+</html>
